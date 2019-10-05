@@ -1,0 +1,32 @@
+<div class="columns is-mobile" ng-if="$ctrl.products.length > 0">
+  <div
+    class="column is-one-half"
+    ng-repeat="product in $ctrl.products track by $index"
+  >
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by2" ng-if="product.image">
+          <img ng-src="{{ product.image }}" alt="" />
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ product.title }}</p>
+            <p class="subtitle is-6">{{ product.price | currency: '£' }}</p>
+          </div>
+        </div>
+
+        <div class="content">
+          {{ product.description }}
+          <br />
+          <br />
+          <time datetime="2016-1-1"
+            >Date added
+            {{ product.dateAdded | date: 'MM/dd/yyyy @ h:mma' }}</time
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

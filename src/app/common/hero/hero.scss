@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Knewave&display=swap');
+
+.hero {
+  background: #2b3566 !important;
+
+  //background-image: url('../images/shapes.png') !important;
+  &__title {
+    color: white !important;
+    font-family: 'Knewave', cursive;
+    font-size: 4rem !important;
+    font-weight: 300 !important;
+    text-shadow: 2px 3px 3px #d800ff;
+  }
+}
+
+.testingnow {
+  background: #161a34;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}

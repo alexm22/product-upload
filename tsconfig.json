@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "declaration": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*", "typings.d.ts"],
+  "exclude": ["node_modules"],
+  "types": ["angular"],
+  //set typings to help typescript //
+  "typeRoots": ["typings.d.ts"]
+}

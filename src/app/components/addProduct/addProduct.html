@@ -1,0 +1,48 @@
+<form name="productForm" ng-submit="$ctrl.submitProduct($ctrl.newProduct)">
+  <div class="field">
+    <label class="label">Title</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        name="title"
+        placeholder="Text input"
+        ng-model="$ctrl.newProduct.title"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+      <textarea
+        class="textarea"
+        placeholder="Textarea"
+        name="description"
+        ng-model="$ctrl.newProduct.description"
+      ></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Price</label>
+    <div class="control">
+      <input
+        class="input"
+        type="number"
+        placeholder="Text input"
+        name="price"
+        ng-model="$ctrl.newProduct.price"
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Image</label>
+    <div class="control">
+      <input type="file" name="file" id="file" class="file" name="image" />
+    </div>
+  </div>
+  <button type="submit">add product</button>
+</form>
+
+<!--div>
+  <img ng-src="{{ $ctrl.newProduct.image }}" />
+</div-->
