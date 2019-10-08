@@ -9,17 +9,27 @@ class ProductController implements IController {
   products: any[] = [];
   hasSet: any;
   static $inject = ['$scope', 'ProductService'];
+  testProduct: {};
 
   $onInit() {}
   constructor($scope: IScope, private productService: ProductService) {
     this.$scope = $scope;
     this.newProduct = {};
     this.productService = productService;
+
+    this.testProduct = {
+      title: 'item one',
+      description: 'some description about this item',
+      price: '300',
+      quantity: '3'
+    };
   }
 
   $apply() {}
 
   submitProduct(product: ProductItem) {
+    this.productService.addNewProduct(product);
+
     const inputImage = (<HTMLInputElement>document.getElementById('file'))
       .files[0];
     const imagePromise = this.productService.uploadFile(inputImage);
@@ -27,11 +37,13 @@ class ProductController implements IController {
     imagePromise.then(image => {
       // use scope apply to tell angular's digestive cycle //
       this.$scope.$apply(() => {
+        console.log(this.newProduct.image)
         this.newProduct.image = image;
         this.productService.addProduct(product);
         this.reset();
       });
     });
+    console.log(product);
   }
 
   reset(): any {

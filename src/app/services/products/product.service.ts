@@ -1,15 +1,21 @@
 import { ProductItem } from '../../components/products/models/productItem';
+import { IHttpProvider } from 'angular';
 
 export class ProductService {
-  users = ['asd', 'asdd', 'asdsa7'];
+  $http: any;
+  constructor($http: IHttpProvider) {
+    this.$http = $http;
+    this.getProducts();
+  }
   productList: ProductItem[] = [];
 
   getProducts() {
-    this.productList.push({
-      description: 'asdsa',
-      title: 'mya'
-    });
-    return this.productList;
+    this.$http({
+      method: 'GET',
+      url: 'http://localhost:3000/api'
+    })
+      .then((res: any) => this.productList.push(res.data))
+      .catch((error: any) => console.log(error));
   }
 
   async addProduct(product: ProductItem) {
@@ -25,5 +31,16 @@ export class ProductService {
       };
       reader.readAsDataURL(file);
     });
+  }
+
+  addNewProduct(product: any) {
+    this.$http
+      .post('http://localhost:3000/api', product)
+      .then((response: any) => {
+        console.log('posted successfully');
+      })
+      .catch((response: any) => {
+        console.error('error in posting');
+      });
   }
 }
